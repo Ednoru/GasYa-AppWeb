@@ -1,0 +1,256 @@
+<template>
+    <h1 class="titulogrifo">Grifos Asociados</h1>
+
+    <div class="boton-container">
+        <button class="btnRepsol" :class="{ activo: botonActivo === 'divRepsol' }" @click="mostrar('divRepsol')">Repsol</button>
+        <button class="btnPPeru" :class="{ activo: botonActivo === 'divPetroPeru' }" @click="mostrar('divPetroPeru')">PetroPeru</button>
+        <button class="btnPrimax" :class="{ activo: botonActivo === 'divPrimax' }" @click="mostrar('divPrimax')">Primax</button>
+        <button class="btnPecsa" :class="{ activo: botonActivo === 'divPecsa' }" @click="mostrar('divPecsa')">Pecsa</button>
+    </div>
+
+    <div class="infogrifo-container">
+
+        <div id="divRepsol" style="display:none;">
+            <div class="Regular">
+                <img src="@/assets/Grifos/RegularRepsol.png" alt="Gasolina Regular">
+                <div class="descripcionRegular">
+                    <p class="nombreCombustible">G Regular Neotech</p>
+                    <div class="contenido">
+                        <p class="descripcionCombustible">Descripcion: Si antes usabas gasolina de 84 o 90, 
+                        Ahora deberás usar Repsol G Regular con Neotech.  </p>
+                        <p class="precioCombustible">Precio: S/.17.39 x Galon</p>
+                    </div>
+                </div>
+            </div>
+            <div class="Premium">
+                <img src="@/assets/Grifos/PremiumRepsol.png" alt="Gasolina Premium">
+                <div class="descripcionPremium">
+                    <p class="nombreCombustible">G Premium Neotech</p>
+                    <div class="contenido">
+                        <p class="descripcionCombustible">Descripcion: Si antes usabas gasolina de 95 o 98,
+                        Ahora deberás usar Repsol G Premium con Neotech.</p>
+                        <p class="precioCombustible">Precio: S/.18.99 x Galon</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="divPetroPeru" style="display:none;">
+            <div class="Regular">
+                <img src="@/assets/Grifos/RegularPPeru.png" alt="Gasolina Regular">
+                <div class="descripcionRegular">
+                    <p class="nombreCombustible">Superplus Regular</p>
+                    <div class="contenido">
+                        <p class="descripcionCombustible">Descripcion: Si antes usabas gasolina de 84 o 90, 
+                        Ahora deberás usar G-Superplus Regular.</p>
+                        <p class="precioCombustible">Precio: S/.17.30 x Galon</p>
+                    </div>
+                </div>
+            </div>
+            <div class="Premium">
+                <img src="@/assets/Grifos/PremiumPPeru.png" alt="Gasolina Premium">
+                <div class="descripcionPremium">
+                    <p class="nombreCombustible">Superplus Premium</p>
+                    <div class="contenido">
+                        <p class="descripcionCombustible">Descripcion: Si antes usabas gasolina de 95 o 97, 
+                        Ahora deberás usar G-Superplus Premium.</p>
+                        <p class="precioCombustible">Precio: S/.18.70 x Galon</p>
+                    </div>
+                </div>
+            </div> 
+        </div>
+
+        <div id="divPrimax" style="display:none;">
+            <div class="Regular">
+                <img src="@/assets/Grifos/RegularPrimax.png" alt="Gasolina Regular">
+                <div class="descripcionRegular">
+                    <p class="nombreCombustible">G-Regular</p>
+                    <div class="contenido">
+                        <p class="descripcionCombustible">Descripcion: G-Regular:ADITIVOS ALEMANES, MÁS LIMPIEZA
+                        Y MEJOR CUIDADO DEL MOTOR</p>
+                        <p class="precioCombustible">Precio: S/.18.25 x Galon</p>
+                    </div>
+                </div>
+            </div>
+            <div class="Premium">
+                <img src="@/assets/Grifos/PremiumPrimax.png" alt="Gasolina Premium">
+                <div class="descripcionPremium">
+                    <p class="nombreCombustible">G-Premium G-Prix</p>
+                    <div class="contenido">
+                        <p class="descripcionCombustible">Descripcion: MAYOR POTENCIA DEL MOTOR, MAYOR LIMPIEZA DEL MOTOR,
+                            MÁS RENDIMIENTO, EXTIENDE LA VIDA ÚTIL DEL MOTOR</p>
+                        <p class="precioCombustible">Precio: S/.20.69 x Galon</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="divPecsa" style="display:none;">
+            <div class="Regular">
+                <img src="@/assets/Grifos/RegularPecsa.png" alt="Gasolina Regular">
+                <div class="descripcionRegular">
+                    <p class="nombreCombustible">G-Regular</p>
+                    <div class="contenido">
+                        <p class="descripcionCombustible">Descripcion: G-Regular: Para vehiculos que usan gasolina de 84 y 90</p>
+                        <p class="precioCombustible">Precio: S/.17.81 x Galon</p>
+                    </div>
+                </div>
+            </div>
+            <div class="Premium">
+                <img src="@/assets/Grifos/PremiumPecsa.png" alt="Gasolina Premium">
+                <div class="descripcionPremium">
+                    <p class="nombreCombustible">G-Premium</p>
+                    <div class="contenido">
+                        <p class="descripcionCombustible">Descripcion: G-Premium: Para vehiculos que usan gasolina de 95 y 97</p>
+                        <p class="precioCombustible">Precio: S/.19.20 x Galon</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</template> 
+
+<style>
+
+    .titulogrifo{
+        font-size: 1.5em;
+        font-weight: bold;
+        padding-bottom: 15px;
+    }
+
+    .boton-container{
+        margin-bottom: 20px;
+    }
+
+    .boton-container button.activo {
+        background-color: red; 
+        color: white;
+    }
+
+    button {
+        width: 100px;
+        background-color: red;
+        font-weight: 600;
+        font-size: 20px;
+        padding: 15px 40px;  
+        border-color: red;
+        border-width: 3px;
+        border-style: solid;
+        border-radius: 35px;
+        margin-bottom: 20px;  
+    }
+
+    .btnRepsol, .btnPPeru, .btnPrimax, .btnPecsa{
+        margin-right: 15px;
+    }
+
+
+    button:hover {
+        background-color: red;
+        color:white;
+    }
+
+    .Regular, .Premium{
+        display: flex;
+        align-items: stretch;
+    }
+
+    .nombreCombustible{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 3vh;
+        font-weight: bold;
+    }
+    
+
+    .descripcionCombustible{
+        text-align: left;
+    }
+
+
+    .precioCombustible{
+        text-align: left;
+    }
+
+    .descripcionRegular, .descripcionPremium {
+        flex-grow: 1; 
+        background-color: rgba(169, 245, 248, 0.986);
+        border-radius: 20px;
+        border: 2px solid rgba(169, 245, 248, 0.986);
+        padding: 8px;
+        margin-bottom:20px;
+        
+    }
+
+    #divRepsol img {
+        max-width: 225px; 
+        height: auto; 
+        border-radius: 5px; 
+        margin-right: 15px; 
+        margin-bottom: 40px;
+    }
+
+    #divPetroPeru img {
+        max-width: 225px; 
+        height: auto; 
+        border-radius: 5px; 
+        margin-right: 15px; 
+        margin-bottom: 40px;
+    }
+
+    #divPrimax img {
+        max-width: 225px; 
+        height: auto; 
+        border-radius: 5px; 
+        margin-right: 15px; 
+        margin-bottom: 40px;
+    }
+
+    #divPecsa img {
+        max-width: 225px; 
+        height: auto; 
+        border-radius: 5px; 
+        margin-right: 15px; 
+        margin-bottom: 40px;
+    }
+</style>
+
+
+
+<script>
+    export default{
+        name: 'grifos-gasya',
+
+        data(){
+            return{
+                botonActivo:null
+                
+            }
+        },
+
+        methods: {
+            mostrar(idDiv) {
+                this.botonActivo = idDiv;
+                let todosLosDivs = ['divRepsol', 
+                 'divPetroPeru', 'divPrimax',
+                  'divPecsa'];
+                
+                todosLosDivs.forEach(id => {
+                    let div = document.getElementById(id);
+                    if (div) {
+                        div.style.display = "none";
+                    }
+                });
+
+                let div = document.getElementById(idDiv);
+                if (div) div.style.display = "block"; 
+            }
+            
+            
+        },
+        components:{
+        }
+    }
+</script>
