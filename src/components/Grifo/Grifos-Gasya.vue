@@ -111,7 +111,7 @@
     
 </template> 
 
-<style>
+<style scoped>
 
     .titulogrifo{
         font-size: 1.5em;

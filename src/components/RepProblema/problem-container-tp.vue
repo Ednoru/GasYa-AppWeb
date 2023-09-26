@@ -6,7 +6,7 @@
     </div>
 </template>
 
-<style>
+<style scoped>
   .problema-container {
     margin-left: 80px;
     margin-right: 80px;

@@ -4,7 +4,7 @@
         <hr class="font-bold w-[80%] h-[10px] bg-black mx-auto mt-[8px]">
         <bttnper v-for="(btn, index) in button" :key="index" :text="btn.text" :clase="btn.clase"></bttnper>
     </div>
-    <div class="w-[100%] h-[75px] bg-red-600 mt-auto" ></div>
+    <div class="md:w-[100%] h-[75px] bg-red-600 mt-auto" ></div>
 </template>
 
 <script>
@@ -26,7 +26,7 @@ export default {
     },
     components: {
         imgper,
-        bttnper
+        bttnper,
     }
 }
 

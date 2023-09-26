@@ -26,7 +26,7 @@
     </div>
 </template>
 
-<style>
+<style scoped>
     .titulopromociones{
         font-size: 1.5em;
         font-weight: bold;

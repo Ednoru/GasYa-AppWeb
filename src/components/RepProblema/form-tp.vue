@@ -11,7 +11,7 @@
     </div>
 </template>
 
-<style>
+<style scoped>
   .boton {
     background-color: #24A476;
     color: white;
