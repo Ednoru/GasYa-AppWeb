@@ -128,7 +128,7 @@
         color: white;
     }
 
-    button {
+    /*button {
         width: 100px;
         background-color: red;
         font-weight: 600;
@@ -139,10 +139,17 @@
         border-style: solid;
         border-radius: 35px;
         margin-bottom: 20px;  
-    }
+    }*/
 
     .btnRepsol, .btnPPeru, .btnPrimax, .btnPecsa{
         margin-right: 15px;
+        border-radius: 35px;
+        border-color: red;
+        border-width: 3px;
+        border-style: solid;
+        padding: 5px 30px;
+        margin-bottom: 20px;  
+        font-weight: 600;
     }
 
 

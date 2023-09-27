@@ -5,6 +5,7 @@ import ReportarProblemaComponent from "@/views/ReportarProblema.vue";
 import FaqComponent from "@/views/FAQ.vue";
 import GrifosComponent from "@/views/GrifosInfoPromotions.vue";
 
+
 export const router = createRouter({
     history: createWebHistory(),
     routes: [
@@ -27,5 +28,7 @@ export const router = createRouter({
             path: "/grifos",
             component: GrifosComponent
         },
+        
+       
     ]
 });
