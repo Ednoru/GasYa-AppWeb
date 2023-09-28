@@ -1,6 +1,6 @@
 <template>
-  <tabMenu></tabMenu>
-  <Router-view></Router-view>
+    <tabMenu></tabMenu> 
+    <Router-view></Router-view>
 </template>
 
 <script>
