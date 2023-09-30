@@ -4,11 +4,11 @@
       <h1 class="tituloIS">Iniciar Sesion</h1>
       <div>
         <label for="email">Correo electrónico:</label>
-        <input type="email" id="email" v-model="email" placeholder="Ingrese su correo">
+        <input type="email" id="correo" v-model="correo" placeholder="Ingrese su correo">
       </div>
       <div>
         <label for="password">Contraseña:</label>
-        <input type="password" id="password" v-model="password" placeholder="Ingrese su contraseña">
+        <input type="password" id="contrasena" v-model="contrasena" placeholder="Ingrese su contraseña">
       </div>
       <button type="submit" :disabled="!isValidForm">Iniciar sesión</button>
       <router-link to="/registro">¿No tienes cuenta? Regístrate aquí</router-link>
@@ -16,21 +16,36 @@
   </section>
 </template>
 
-  
 <script>
-import UserService from "@/services/UserService.js";
+import UserService from "@/services/UserServices";
 
 export default {
-  // ... el resto de tu código ...
-
+  data() {
+    return {
+      correo: '',
+      contrasena: ''
+    };
+  },
+  computed: {
+    isValidForm() {
+      return this.correo && this.contrasena;
+    }
+  },
   methods: {
+    onSubmit() {
+      if (this.isValidForm) {
+        this.checkCredentials();
+      } else {
+        console.log('Por favor, complete todos los campos.');
+      }
+    },
     checkCredentials() {
       UserService.getUsers().then(response => {
         const users = response.data;
         const user = users.find(u => u.correo === this.correo && u.contrasena === this.contrasena);
         if (user) {
           console.log('Inicio de sesión exitoso');
-          this.$router.push('/ruta-deseada');
+          this.$router.push('/');
         } else {
           console.log('Credenciales inválidas');
         }
@@ -39,6 +54,7 @@ export default {
   }
 };
 </script>
+
 
   
   <style scoped>
