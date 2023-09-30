@@ -67,12 +67,12 @@ export default {
         font-weight: bold;
     }
 
-    /* Espacio entre los elementos del formulario */
+
     form div {
         margin-bottom: 10px;
     }
 
-    /* Estilo para los campos de entrada */
+
     input[type="email"], input[type="password"] {
         width: 100%;
         padding: 10px;
@@ -80,7 +80,7 @@ export default {
         border-radius: 4px;
     }
 
-    /* Estilo para el botón de enviar */
+  
     button {
         display: block;
         background-color: white;
@@ -94,7 +94,7 @@ export default {
         margin-right: auto;
     }
 
-    /* Cambio de estilo para el botón cuando se pasa el mouse por encima */
+   
     button:hover {
         color: white;
         background-color: red;
