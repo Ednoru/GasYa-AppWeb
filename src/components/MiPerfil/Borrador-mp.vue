@@ -3,11 +3,11 @@
     <div class="profile-info">
       <img :src="profileImage" alt="Imagen de perfil" class="profile-image">
       <div class="user-details">
-        <h2><strong>{{ nombreUsuario }}</strong></h2>
-        <p>{{ correoElectronico }}</p>
+        <h2><strong>{{ user && user.nombre }}</strong></h2>
+        <p>{{ user && user.correo }}</p>
       </div>
 
-    </div>  
+    </div>
     <div class="profile-links" >
       <div class="profile-link">
         <i class="fas fa-user"></i>
@@ -33,7 +33,7 @@
     <div class="profile-popup" v-if="showPopup">
       <div class="profile-popup-content">
         <div class="popup-profile-info">
-       
+
           <h2><strong>Foto de Perfil</strong></h2>
           <img :src="profileImage" alt="Imagen de perfil" class="popup-profile-image">
           <p><button @click="quitarFoto">Quitar Foto</button></p>
@@ -41,13 +41,13 @@
           <div class="popup-user-details">
 
             <h2><strong>Nombre</strong></h2>
-            <p v-if="!editandoNombre">{{ nombreUsuario }}</p>
+            <p v-if="!editandoNombre">{{ user && user.nombre }}</p>
             <input v-else v-model="nombreEditado" type="text">
             <button v-if="!editandoNombre" @click="editarNombre">Editar</button>
             <button v-else @click="guardarNombre" class="guardar">Guardar</button>
-            
+
             <h2><strong>Correo Electrónico</strong></h2>
-            <p v-if="!editandoCorreo">{{ correoElectronico }}</p>
+            <p v-if="!editandoCorreo">{{ user && user.correo }}</p>
             <input v-else v-model="correoEditado" type="text">
             <button v-if="!editandoCorreo" @click="editarCorreo">Editar</button>
             <button v-else @click="guardarCorreo" class="save">Guardar</button>
@@ -74,8 +74,8 @@ export default {
   name: 'borrador-perfil',
   data() {
     return {
-      nombreUsuario: 'SEBASTIAN CÓRDOVA VALDIVIA',
-      correoElectronico: 'sebascordoba123@gmail.com',
+      nombreUsuario: '',
+      correoElectronico: '',
       nombreEditado: '',
       correoEditado: '',
       idioma: 'ES', // Código de idioma por defecto
@@ -87,7 +87,11 @@ export default {
         { nombre: 'ESPAÑOL', codigo: 'ES' },
         { nombre: 'INGLÉS', codigo: 'EN' },
         { nombre: 'PORTUGUÉS', codigo: 'PT' }
-      ]
+      ],
+      user: {
+        nombre: '',
+        correo: '',
+      }
     };
   },
   computed: {
@@ -97,8 +101,16 @@ export default {
     }
   },
   methods: {
-    showProfilePopup() {
+    async showProfilePopup() {
       this.showPopup = !this.showPopup;
+      if (this.showPopup) {
+        const user =JSON.parse(localStorage.getItem('user'));
+        if (user){
+          this.user=user;
+        }else {
+          console.log('Usuario no encontrado');
+        }
+      }
     },
     toggleEditIdioma() {
       this.editandoIdioma = !this.editandoIdioma;
@@ -134,7 +146,7 @@ export default {
       this.guardarCorreo();
       this.guardarIdioma();
       this.showPopup=false;
-    }
+    },
   }
 };
 </script>
