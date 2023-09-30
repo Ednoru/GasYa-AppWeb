@@ -1,6 +1,6 @@
 <template>
     <div>
-      <!-- Tu código HTML aquí -->
+      <h1>rumbleverse</h1>
     </div>
   </template>
   

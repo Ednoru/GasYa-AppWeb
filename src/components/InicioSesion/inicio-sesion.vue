@@ -1,6 +1,6 @@
 <template>
     <div>
-      <!-- Tu código HTML aquí -->
+      <h1>hola</h1>
     </div>
   </template>
   

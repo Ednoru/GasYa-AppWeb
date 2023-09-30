@@ -21,6 +21,13 @@
             <Router-Link to="/perfil" class="m-[10px]">
               Mi Perfil
             </Router-Link>
+            <Router-Link to="/login" class="m-[10px]">
+              Iniciar Sesion
+            </Router-Link>
+            <Router-Link to="/signup" class="m-[10px]">
+              Registrate
+            </Router-Link>
+            
         </ul>
     </div>
 </template>
