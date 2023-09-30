@@ -11,7 +11,7 @@
         <input type="password" id="contrasena" v-model="contrasena" placeholder="Ingrese su contraseña">
       </div>
       <button type="submit" :disabled="!isValidForm">Iniciar sesión</button>
-      <router-link to="/registro">¿No tienes cuenta? Regístrate aquí</router-link>
+      <router-link to="/singup">¿No tienes cuenta? Regístrate aquí</router-link>
     </form>
   </section>
 </template>
@@ -44,6 +44,7 @@ export default {
         const users = response.data;
         const user = users.find(u => u.correo === this.correo && u.contrasena === this.contrasena);
         if (user) {
+          localStorage.setItem('user', JSON.stringify(user));
           console.log('Inicio de sesión exitoso');
           this.$router.push('/');
         } else {
