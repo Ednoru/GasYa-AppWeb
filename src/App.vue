@@ -6,6 +6,7 @@
 <script>
 import tabMenu from './components/tabMenu.vue';
 
+
 export default {
   name: 'App',
   components: {
