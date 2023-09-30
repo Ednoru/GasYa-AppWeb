@@ -11,7 +11,7 @@
         <input type="password" id="contrasena" v-model="contrasena" placeholder="Ingrese su contraseña">
       </div>
       <button type="submit" :disabled="!isValidForm">Iniciar sesión</button>
-      <router-link to="/singup">¿No tienes cuenta? Regístrate aquí</router-link>
+      <router-link to="/signup">¿No tienes cuenta? Regístrate aquí</router-link>
     </form>
   </section>
 </template>
