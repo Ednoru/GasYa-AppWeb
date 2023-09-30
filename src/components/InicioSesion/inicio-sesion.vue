@@ -21,7 +21,7 @@
 import UserService from "@/services/UserService.js";
 
 export default {
-  // ... el resto de tu código ...
+
 
   methods: {
     checkCredentials() {
