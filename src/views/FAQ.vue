@@ -1,8 +1,8 @@
 <template>
     <div>
-      <!-- Otras partes de tu vista -->
+    
       <preguntasfrecu />
-      <!-- Otras partes de tu vista -->
+      
     </div>
   </template>
   
