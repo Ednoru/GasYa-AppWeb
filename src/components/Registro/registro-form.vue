@@ -45,8 +45,8 @@
   },
   computed: {
     isValidForm() {
-      // Aquí puedes agregar validaciones más completas si es necesario.
-      return this.nombre && this.apellido && this.correo && this.contrasena; // Ejemplo simple
+      
+      return this.nombre && this.apellido && this.correo && this.contrasena; 
     }
   },
   methods: {
@@ -106,19 +106,19 @@ form div {
 }
 
 .input-group { 
-    justify-content: space-between; /* Distribuye el espacio entre los elementos */
-    align-items: center; /* Centra los elementos verticalmente */
-    margin-bottom: 10px; /* Añade un poco de espacio entre los grupos */
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 10px; 
 }
 
 .input-group label {
     display: block;
-    margin-right: 10px; /* Añade un poco de espacio entre la etiqueta y el input */
+    margin-right: 10px; 
     margin-bottom: 10px;
 }
 
 .input-group input {
-    height: 35px;  /* O el tamaño que desees */
+    height: 35px;  
     font-size: medium;
     width: 250px;
 }
