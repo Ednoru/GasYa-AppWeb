@@ -24,45 +24,43 @@
 
       <button type="submit" :disabled="!isValidForm">Registrar</button>
     </form>
+
+    <div v-if="showErrorMessage" class="error-messaje">
+      Por favor ingrese un correo válido, recuerde que la contraseña debe tener al menos 8 caracteres, una mayúscula y un número.
+    </div>
   </section>
 </template>
 
-<script>
-  import UserService from "@/services/UserServices";
+<script setup> 
+  import UserService from "@/services/User.service";
+  import { ref, computed } from "vue";
 
-  export default {
-    name: 'registro-form',
-    data() {
-      return {
-        nombre: '',
-        apellido: '',
-        correo: '',
-        contrasena: ''
-      };
-    },
-    computed: {
-      isValidForm() {
-        return this.nombre && this.apellido && this.correo && this.contrasena;
-      }
-    },
-    methods: {
-      onSubmit() {
-        if (this.isValidForm) {
-          const userData = {
-            nombre: this.nombre,
-            apellido: this.apellido,
-            correo: this.correo,
-            contrasena: this.contrasena
-          };
+  const nombre = ref("");
+  const apellido = ref("");
+  const correo = ref("");
+  const contrasena = ref("");
+  const showErrorMessage = ref(false);
 
-          UserService.addUser(userData).then(response => {
-            console.log('Usuario registrado', response);
-            this.$router.push('/login');
-          });
-        } else {
-          console.log('Datos inválidos');
-        }
-      }
+  const isValidForm = computed(() => {
+    return nombre.value && apellido.value && correo.value && contrasena.value;
+  });
+
+  const onSubmit = async (router) => {
+    const user = {
+      nombre: nombre.value,
+      apellido: apellido.value,
+      correo: correo.value,
+      contrasena: contrasena.value,
+    };
+
+    const response = await UserService.addUser(user);
+
+    if (response.status === 201) {
+      showErrorMessage.value = false;
+      alert("Usuario registrado correctamente", response.data);
+      router.push('/login');
+    } else {
+      showErrorMessage.value = true;
     }
   };
 </script>
@@ -117,7 +115,7 @@
   }
 
   /* Estilo para los campos de entrada */
-  input[type="email"], input[type="password"] {
+  input[type="text"], input[type="email"], input[type="password"] {
       width: 100%;
       padding: 10px;
       border: 1px solid #ccc;

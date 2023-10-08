@@ -1,4 +1,42 @@
 <template>
+  <div>
+    <h1 class="titulopromociones">Promociones(*)</h1>
+
+    <Card v-for="promocion in promociones" :key="promocion.id " class="custom-card">
+      <template #header>
+      </template>
+      <template #title>
+        <h3 class="title">{{ promocion.nombre }}</h3>
+      </template>
+      <template #content>
+        <p class="description">{{ promocion.descripcion }}</p>
+      </template>
+    </Card>
+  </div>
+</template>
+
+<script setup>
+  import Card from 'primevue/card';
+  import { ref, onMounted } from 'vue';
+  import { getPromos } from "@/services/Grifos_Promos.service";
+
+  const promociones = ref([]);
+
+  const loadPromociones = async () => {
+    try {
+      promociones.value = await getPromos();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  onMounted(() => {
+    loadPromociones();
+  });
+</script>
+
+<!--
+<template>
     <h1 class="titulopromociones">Promociones(*)</h1>
     <div class="Promocion">
         <img class="promo1" src="@/assets/Grifos/Promocion1.png" alt="Promocion 1">
@@ -25,7 +63,7 @@
         </div>
     </div>
 </template>
-
+-->
 <style scoped>
     .titulopromociones{
         font-size: 1.5em;
@@ -81,7 +119,7 @@
 
 
 </style>
-
+<!--
 <script>
     export default{
         name: 'promociones-gasya',
@@ -91,3 +129,4 @@
         }
     }
 </script>
+-->
