@@ -19,6 +19,10 @@
       <h2>{{ grifo.nombre }}</h2>
       <ul>
         <li v-for="combustible in grifo.combustible" :key="combustible.nombre">
+          <img
+              :src="'/Grifos/' + combustible.logo + '.png'"
+              :alt="combustible.nombre"
+          />
           <strong>{{ combustible.nombre }}</strong>
           <p>Precio: {{ combustible.precio }}</p>
           <p>{{ combustible.descripcion }}</p>

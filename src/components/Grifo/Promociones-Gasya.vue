@@ -4,6 +4,10 @@
 
     <Card v-for="promocion in promociones" :key="promocion.id " class="custom-card">
       <template #header>
+        <img
+          :src="'/Grifos/' + promocion.img + '.png'"
+          :alt="promocion.nombre"
+        />
       </template>
       <template #title>
         <h3 class="title">{{ promocion.nombre }}</h3>
