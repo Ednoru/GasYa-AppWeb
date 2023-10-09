@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const user_api = 'https://my-json-server.typicode.com/Ednoru/GasYa-AppWeb';
+const user_api = 'http://localhost:3000';
 
 const UserService = {
   getUsers() {
@@ -11,6 +11,10 @@ const UserService = {
     return axios.post(`${user_api}/users`, userData);
   },
 
+  async passUsed(contrasena) {
+      const response = await axios.get(`${user_api}/users?contrasena=${contrasena}`);
+      return response.data.length > 0;
+  }
 };
 
 export default UserService;

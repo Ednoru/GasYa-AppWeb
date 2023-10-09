@@ -4,15 +4,29 @@
       <h1 class="tituloIS">Iniciar Sesion</h1>
       <div>
         <label for="email">Correo electrónico:</label>
-        <input type="email" id="correo" v-model="correo" placeholder="Ingrese su correo">
+        <input
+            type="email"
+            id="correo"
+            v-model="correo"
+            placeholder="Ingrese su correo">
       </div>
+
       <div>
         <label for="password">Contraseña:</label>
-        <input type="password" id="contrasena" v-model="contrasena" placeholder="Ingrese su contraseña">
+        <input
+            type="password"
+            id="contrasena"
+            v-model="contrasena"
+            placeholder="Ingrese su contraseña">
       </div>
+
       <button type="submit" :disabled="!isValidForm">Iniciar sesión</button>
       <router-link to="/signup">¿No tienes cuenta? Regístrate aquí</router-link>
     </form>
+
+    <div v-if="error" class="error-message">
+      Credenciales incorrectas, por favor intentelo denuevo.
+    </div>
   </section>
 </template>
 
@@ -23,7 +37,8 @@ export default {
   data() {
     return {
       correo: '',
-      contrasena: ''
+      contrasena: '',
+      error: false
     };
   },
   computed: {
@@ -48,7 +63,7 @@ export default {
           console.log('Inicio de sesión exitoso');
           this.$router.push('/');
         } else {
-          console.log('Credenciales inválidas');
+          this.error = true;
         }
       });
     }

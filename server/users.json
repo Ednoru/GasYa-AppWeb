@@ -27,7 +27,27 @@
       "correo": "delegadofalla@gmail.com",
       "contrasena": "eltaxista03",
       "id": 4
+    },
+    {
+      "nombre": "Faraon",
+      "apellido": "LoveShady",
+      "correo": "FaraGod@gmail.com",
+      "contrasena": "ohmevengooooooo",
+      "id": 5
+    },
+    {
+      "nombre": "Alejo",
+      "apellido": "Chanchez",
+      "correo": "elasimismo@gmail.com",
+      "contrasena": "sillonador",
+      "id": 6
+    },
+    {
+      "nombre": "Renzo",
+      "apellido": "Arunategui",
+      "correo": "jajajaj@gmail.com",
+      "contrasena": "elpepe123Gaa",
+      "id": 7
     }
   ]
 }
-

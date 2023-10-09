@@ -18,22 +18,45 @@
       </div>
 
       <div class="input-group">
+        <!--
         <label>Contraseña:</label>
         <input type="password" v-model="contrasena" placeholder="Ingrese su contraseña">
+        -->
+        <label>Contraseña:</label>
+        <Password
+            v-model="contrasena"
+            placeholder="Ingrese su contraseña"
+            toggleMask>
+          <template #header>
+            <h6 >Contraseña</h6>
+          </template>
+          <template #footer>
+            <Divider />
+            <p class="mt-2">Sugerencias:</p>
+            <ul class="pl-2 ml-2 mt-3" style="line-height: 1.5">
+              <li>Debe tener al menos 8 caracteres</li>
+              <li>Debe tener al menos un número</li>
+              <li>Debe tener al menos una letra mayúscula</li>
+            </ul>
+          </template>
+        </Password>
       </div>
 
       <button type="submit" :disabled="!isValidForm">Registrar</button>
     </form>
 
     <div v-if="showErrorMessage" class="error-messaje">
-      Por favor ingrese un correo válido, recuerde que la contraseña debe tener al menos 8 caracteres, una mayúscula y un número.
+      Contraseña inválida o ya está en uso.
     </div>
   </section>
 </template>
 
-<script setup> 
+<script setup>
+  import Password from "primevue/password";
+  import Divider from "primevue/divider";
   import UserService from "@/services/User.service";
   import { ref, computed } from "vue";
+  import {useRouter} from "vue-router";
 
   const nombre = ref("");
   const apellido = ref("");
@@ -41,11 +64,13 @@
   const contrasena = ref("");
   const showErrorMessage = ref(false);
 
+  const router = useRouter();
+
   const isValidForm = computed(() => {
     return nombre.value && apellido.value && correo.value && contrasena.value;
   });
 
-  const onSubmit = async (router) => {
+  const onSubmit = async () => {
     const user = {
       nombre: nombre.value,
       apellido: apellido.value,
@@ -53,12 +78,21 @@
       contrasena: contrasena.value,
     };
 
+    const passInUse = await UserService.passUsed(contrasena.value);
+
+    if (passInUse) {
+      showErrorMessage.value = true;
+      return;
+    }
+
     const response = await UserService.addUser(user);
 
     if (response.status === 201) {
       showErrorMessage.value = false;
-      alert("Usuario registrado correctamente", response.data);
-      router.push('/login');
+      alert("Usuario registrado correctamente");
+      await router.push("/login");
+    } else if (nombre.value === "" || apellido.value === "" || correo.value === "" || contrasena.value === "") {
+      alert("Debe llenar todos los campos");
     } else {
       showErrorMessage.value = true;
     }
@@ -85,61 +119,61 @@
   }
 
   .tituloSU{
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 2em;
-      font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+    font-weight: bold;
   }
   
   /* Espacio entre los elementos del formulario */
   form div {
-      margin-bottom: 10px;
+    margin-bottom: 10px;
   }
 
   .input-group {
-      justify-content: space-between; /* Distribuye el espacio entre los elementos */
-      align-items: center; /* Centra los elementos verticalmente */
-      margin-bottom: 10px; /* Añade un poco de espacio entre los grupos */
+    justify-content: space-between; /* Distribuye el espacio entre los elementos */
+    align-items: center; /* Centra los elementos verticalmente */
+    margin-bottom: 10px; /* Añade un poco de espacio entre los grupos */
   }
 
   .input-group label {
-      display: block;
-      margin-right: 10px; /* Añade un poco de espacio entre la etiqueta y el input */
-      margin-bottom: 10px;
+    display: block;
+    margin-right: 10px; /* Añade un poco de espacio entre la etiqueta y el input */
+    margin-bottom: 10px;
   }
 
   .input-group input {
-      height: 35px;  /* O el tamaño que desees */
-      font-size: medium;
-      width: 250px;
+    height: 35px;  /* O el tamaño que desees */
+    font-size: medium;
+    width: 250px;
   }
 
   /* Estilo para los campos de entrada */
   input[type="text"], input[type="email"], input[type="password"] {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
   }
 
   /* Estilo para el botón de enviar */
   button {
-      display: block;
-      background-color: white;
-      color: black;
-      padding: 10px 15px;
-      border: none;
-      border: 2px solid red;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-left: auto;
-      margin-right: auto;
+    display: block;
+    background-color: white;
+    color: black;
+    padding: 10px 15px;
+    border: none;
+    border: 2px solid red;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   /* Cambio de estilo para el botón cuando se pasa el mouse por encima */
   button:hover {
-      color: white;
-      background-color: red;
-      font-weight: bold;
+    color: white;
+    background-color: red;
+    font-weight: bold;
   }
 </style>
