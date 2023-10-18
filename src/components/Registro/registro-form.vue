@@ -18,26 +18,23 @@
       </div>
 
       <div class="input-group">
-        <!--
-        <label>Contraseña:</label>
-        <input type="password" v-model="contrasena" placeholder="Ingrese su contraseña">
-        -->
         <label>Contraseña:</label>
         <Password
             v-model="contrasena"
             placeholder="Ingrese su contraseña"
             toggleMask>
-          <template #header>
-            <h6 >Contraseña</h6>
-          </template>
           <template #footer>
             <Divider />
-            <p class="mt-2">Sugerencias:</p>
-            <ul class="pl-2 ml-2 mt-3" style="line-height: 1.5">
-              <li>Debe tener al menos 8 caracteres</li>
-              <li>Debe tener al menos un número</li>
-              <li>Debe tener al menos una letra mayúscula</li>
-            </ul>
+            <div class="card mt-4 custom-card">
+              <div class="card-body">
+                <h5 class="card-title custom-card-title">Sugerencias:</h5>
+                <ul class="custom-list-unstyled">
+                  <li>Debe tener al menos 8 caracteres</li>
+                  <li>Debe contener al menos un número</li>
+                  <li>Debe contener al menos una letra mayúscula</li>
+                </ul>
+              </div>
+            </div>
           </template>
         </Password>
       </div>
@@ -124,31 +121,30 @@
     font-size: 2em;
     font-weight: bold;
   }
-  
-  /* Espacio entre los elementos del formulario */
+
+
   form div {
     margin-bottom: 10px;
   }
 
   .input-group {
-    justify-content: space-between; /* Distribuye el espacio entre los elementos */
-    align-items: center; /* Centra los elementos verticalmente */
-    margin-bottom: 10px; /* Añade un poco de espacio entre los grupos */
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
   }
 
   .input-group label {
     display: block;
-    margin-right: 10px; /* Añade un poco de espacio entre la etiqueta y el input */
+    margin-right: 10px;
     margin-bottom: 10px;
   }
 
   .input-group input {
-    height: 35px;  /* O el tamaño que desees */
+    height: 35px;
     font-size: medium;
     width: 250px;
   }
 
-  /* Estilo para los campos de entrada */
   input[type="text"], input[type="email"], input[type="password"] {
     width: 100%;
     padding: 10px;
@@ -156,7 +152,6 @@
     border-radius: 4px;
   }
 
-  /* Estilo para el botón de enviar */
   button {
     display: block;
     background-color: white;
@@ -170,10 +165,33 @@
     margin-right: auto;
   }
 
-  /* Cambio de estilo para el botón cuando se pasa el mouse por encima */
   button:hover {
     color: white;
     background-color: red;
     font-weight: bold;
   }
+
+  .custom-card {
+    background-color: #f8f9fa;
+    border: 1px solid #d1d1d1;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px 15px;
+  }
+
+  .custom-card-title {
+    color: #24A476;
+    font-weight: bold;
+  }
+
+  .custom-list-unstyled {
+    list-style: none;
+    margin-left: 10px;
+    padding-left: 1.5rem;
+  }
+
+  .custom-list-unstyled li {
+    margin-bottom: 0.5rem;
+  }
+
 </style>

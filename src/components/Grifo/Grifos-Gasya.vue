@@ -3,8 +3,7 @@
     <h1 class="titulogrifo">Grifos Asociados</h1>
 
     <div class="boton-container">
-      <!-- Botones para seleccionar la gasolinera -->
-      <button
+      <button class="btn-grifo"
           v-for="grifo in grifos"
           :key="grifo.id"
           :class="{ activo: botonActivo === grifo.nombre }"
@@ -14,8 +13,7 @@
       </button>
     </div>
 
-    <!-- Contenedor para mostrar los datos de la gasolinera seleccionada -->
-    <div v-for="grifo in grifos" :key="grifo.id" :id="grifo.nombre" style="display: none;">
+    <div class="infogrifo-container" v-for="grifo in grifos" :key="grifo.id" :id="grifo.nombre" style="display: none;">
       <h2>{{ grifo.nombre }}</h2>
       <ul>
         <li v-for="combustible in grifo.combustible" :key="combustible.nombre">
@@ -193,38 +191,25 @@
     }
 
     .boton-container button.activo {
-        background-color: red; 
+        background-color: #24A476;
         color: white;
     }
 
-    /*button {
-        width: 100px;
-        background-color: red;
-        font-weight: 600;
-        font-size: 20px;
-        padding: 15px 40px;  
-        border-color: red;
-        border-width: 3px;
-        border-style: solid;
-        border-radius: 35px;
-        margin-bottom: 20px;  
-    }*/
-
-    .btnRepsol, .btnPPeru, .btnPrimax, .btnPecsa{
-        margin-right: 15px;
-        border-radius: 35px;
-        border-color: red;
-        border-width: 3px;
-        border-style: solid;
-        padding: 5px 30px;
-        margin-bottom: 20px;  
-        font-weight: 600;
+    .btn-grifo {
+      margin-right: 15px;
+      border-radius: 35px;
+      border-color: #24A476;
+      border-width: 3px;
+      border-style: solid;
+      padding: 5px 30px;
+      margin-bottom: 20px;
+      font-weight: 600;
     }
 
 
     button:hover {
-        background-color: red;
-        color:white;
+        background-color: #d1cccc;
+        color:#24A476;
     }
 
     .Regular, .Premium{

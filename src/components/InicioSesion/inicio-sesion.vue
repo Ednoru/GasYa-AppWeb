@@ -19,9 +19,10 @@
             v-model="contrasena"
             placeholder="Ingrese su contraseña">
       </div>
-
       <button type="submit" :disabled="!isValidForm">Iniciar sesión</button>
-      <router-link to="/signup">¿No tienes cuenta? Regístrate aquí</router-link>
+      <h3 class="h3-btn">¿No tienes cuenta?
+        <router-link to="/signup" class="btn btn-register">Regístrate aquí</router-link>
+      </h3>
     </form>
 
     <div v-if="error" class="error-message">
@@ -131,5 +132,15 @@ export default {
         color: white;
         background-color: red;
         font-weight: bold;
+    }
+
+    .h3-btn{
+      margin-top: 10px;
+    }
+
+    .btn-register{
+      color: red;
+      font-weight: bold;
+      font-size: 15px;
     }
   </style>
