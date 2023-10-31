@@ -100,7 +100,6 @@ export default {
         font-weight: bold;
     }
 
-    /* Espacio entre los elementos del formulario */
     form div {
         margin-bottom: 10px;
     }
@@ -127,7 +126,6 @@ export default {
         margin-right: auto;
     }
 
-    /* Cambio de estilo para el botón cuando se pasa el mouse por encima */
     button:hover {
         color: white;
         background-color: red;
