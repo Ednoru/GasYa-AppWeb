@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const user_api = 'http://localhost:3000';
+const user_api = 'https://my-json-server.typicode.com/Ednoru/GasYa-AppWeb';
 
 const UserService = {
   getUsers() {
