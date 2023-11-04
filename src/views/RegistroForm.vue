@@ -1,6 +1,10 @@
+
 <template>
-    <registroform></registroform>
-    
+  <div>
+    <!-- Otras partes de tu vista -->
+    <registroform/>
+    <!-- Otras partes de tu vista -->
+  </div>
 </template>
   
   <style scoped>

@@ -1,8 +1,12 @@
+
 <template>
-    <iniciosesion></iniciosesion>
-    
+  <div>
+    <!-- Otras partes de tu vista -->
+    <iniciosesion />
+    <!-- Otras partes de tu vista -->
+  </div>
 </template>
-  
+
   <style scoped>
 
   </style>
