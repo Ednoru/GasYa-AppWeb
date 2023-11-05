@@ -160,7 +160,7 @@ export default {
   padding: 20px;
 }
 
-/* Estilos para la información del perfil */
+
 .profile-info {
   display: flex;
   align-items: center;
