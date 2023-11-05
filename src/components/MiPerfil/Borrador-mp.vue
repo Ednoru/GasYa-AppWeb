@@ -152,7 +152,7 @@ export default {
 </script>
 
 <style scoped>
-/* Estilos para la sección de perfil */
+
 .profile-section {
   font-family: Arial, sans-serif;
   max-width: 600px;
