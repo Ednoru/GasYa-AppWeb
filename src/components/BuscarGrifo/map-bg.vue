@@ -11,6 +11,7 @@
       <option value="">Combustible</option>
     </select>
   </div>
+  
   <div>
     <h1>Grifos Cercanos:</h1>
     <div id="map"></div>
