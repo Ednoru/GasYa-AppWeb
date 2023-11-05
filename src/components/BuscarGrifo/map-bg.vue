@@ -1,55 +1,64 @@
 <template>
-  <div class="container">
-    <h1 class="title">Grifos Cercanos:</h1>
-    <div class="search-container">
-      <input v-model="userAddress" class="address-input" placeholder="Ingresa una dirección">
-      <button @click="searchGasStations" class="search-button">Buscar</button>
-    </div>
-    <div id="map" class="map"></div>
+  <div class="mt-[25px] mr-[25px]">
+    <form action="" class="flex flex-row justify-start">
+      <input type="text" placeholder="Search..." @keydown.enter="updateMarkerLocation(parse($event.target.value))" class="bg-white p-[10px] border-[1px] border-solid border-red-600 rounded-[20px] w-[400px] h-[30px]">
+      <button class="bg-red-600 p-[10px] h-[30px] flex items-center ml-[10px] rounded-[20px] text-white">Buscar</button>
+    </form>
+    <select class="mt-[20px] border-[1px] border-solid border-red-600 rounded-[20px] p-[5px] hover:cursor-pointer">
+      <option value="" disabled selected>Filtrar</option>
+      <option value="">Precio</option>
+      <option value="">Calificación</option>
+      <option value="">Combustible</option>
+    </select>
+  </div>
+  <div>
+    <h1>Grifos Cercanos:</h1>
+    <div id="map"></div>
   </div>
 </template>
 
 <script>
+import {parse} from "postcss";
+
 export default {
   name: 'AddMap',
+  props: {
+    initialLocation: {
+      type: String,
+      default: '',
+    }
+  },
   data() {
     return {
-      userAddress: '',
       map: null,
-      marker: null,
-      circle: null,
-      geocoder: null, // Agrega el objeto geocoder
-    };
+      marker: null
+    }
   },
   mounted() {
     this.initMap();
   },
   methods: {
+    parse,
     async initMap() {
+      const position = { lat: -12.19758965, lng: -77.0082777426229 };
       const { Map, Marker } = await this.importLibrary('maps');
-      const position = { lat: -12.046, lng: -77.0428 };
 
       this.map = new Map(document.getElementById('map'), {
-        zoom: 12,
+        zoom: 6,
         center: position,
         mapId: 'DEMO_MAP_ID',
       });
-
       this.marker = new Marker({
         map: this.map,
         position: position,
-        title: 'Uluru',
+        title: 'Ubicación inicial',
       });
-
-      // Inicializa el objeto geocoder
-      // eslint-disable-next-line no-undef
-      this.geocoder = new google.maps.Geocoder();
+      console.log('Marcador creado:', this.marker);
     },
-
     importLibrary(library) {
       return new Promise((resolve, reject) => {
         const script = document.createElement('script');
-        script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&libraries=${library}&v=beta`;
+        script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyDmVzKjNKXtezL0qdB8Os4tIFJnS0kOAUA&libraries=${library}&v=beta`;
         script.onerror = reject;
         script.onload = () => {
           resolve(window.google.maps);
@@ -57,50 +66,9 @@ export default {
         document.head.appendChild(script);
       });
     },
-    
-    async searchGasStations() {
-      
-      if (this.geocoder) {
-        this.geocoder.geocode({ address: this.userAddress }, (results, status) => {
-          if (status === 'OK' && results[0]) {
-            const userCoordinates = {
-              lat: results[0].geometry.location.lat(),
-              lng: results[0].geometry.location.lng(),
-              zoom: 20,
-            };
-
-          
-            if (this.circle) {
-              this.circle.setMap(null);
-            }
-
-            
-            // eslint-disable-next-line no-undef
-            this.circle = new google.maps.Circle({
-              map: this.map,
-              center: userCoordinates,
-              radius: 2000, 
-              strokeColor: '#00FF00',
-              strokeOpacity: 0.8,
-              strokeWeight: 2,
-              fillColor: '#00FF00',
-              fillOpacity: 0.35,
-              zoom: 20,
-            });
-
-    
-            this.marker.setMap(null); 
-            // eslint-disable-next-line no-undef
-            this.marker = new google.maps.Marker({
-              map: this.map,
-              position: userCoordinates,
-              title: 'Ubicación del usuario',
-            });
-          }
-        });
-      } else {
-        console.error('La biblioteca de Google Maps no se ha cargado correctamente.');
-      }
+    updateMarkerLocation(location) {
+      this.marker.setPosition(location);
+      this.map.setCenter(location);
     },
   },
 };
@@ -108,65 +76,7 @@ export default {
 
 <style>
 #map {
-  height: 650px;
-  width: 1500px;
-  justify-content: center; /* Centra horizontalmente */
-
-}
-
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-.container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  text-align: center;
-}
-
-.title {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-.search-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.address-input {
-  flex: 1;
-  padding: 10px;
-  margin-right: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.search-button {
-  background-color: #007BFF;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.search-button:hover {
-  background-color: #0056b3;
-}
-
-.map {
-  width: 100%;
-  height: 400px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-top: 20px;
-  
+  height: 600px;
+  width: 850px;
 }
 </style>

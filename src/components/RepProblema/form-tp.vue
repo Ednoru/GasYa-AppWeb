@@ -44,7 +44,7 @@
   export default {
     data() {
       return {
-        opciones: ["Precio", "Calificación", "Combustible"],
+        opciones: ["Atención", "Precios", "Mapa"],
         opcionSeleccionada: null,
       };
     },
