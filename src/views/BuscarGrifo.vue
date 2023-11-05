@@ -1,10 +1,20 @@
 <template>
-  <div class="container">
-    <div class="search-container">
-      <input name="searchQuery" v-model="searchQuery" placeholder="Ingresa la dirección">
-      <button @click="searchNearbyGasStation">Buscar</button>
+  <div class="mt-[25px] mr-[35px]">
+    <div>
+      <div class="flex flex-row justify-start">
+        <input name="searchQuery" v-model="searchQuery" placeholder="Ingresa la dirección" class="bg-white p-[10px] border-[1px] border-solid border-red-600 rounded-[20px] w-[400px] h-[30px]">
+        <button @click="searchNearbyGasStation" class="bg-red-600 p-[10px] h-[30px] flex items-center ml-[10px] rounded-[20px] text-white">Buscar</button>
+      </div>
+      <select class="mt-[20px] border-[1px] border-solid border-red-600 rounded-[20px] p-[5px] hover:cursor-pointer">
+        <option value="" disabled selected>Filtrar</option>
+        <option value="">Precio</option>
+        <option value="">Calificación</option>
+        <option value="">Combustible</option>
+      </select>
     </div>
-    <div id="map" class="map"></div>
+  </div>
+  <div class="container">
+    <div id="map"></div>
   </div>
 </template>
 
@@ -113,25 +123,16 @@ export default {
 </script>
 
 <style>
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  height: 100vh;
-}
-
-.search-container {
-  flex: 1;
-  padding: 20px;
-  max-width: 300px; /* Ajusta el ancho máximo según tus preferencias */
-  text-align: center;
-}
-
-#map {
-  flex: 1;
-  width: 400px;
-  height: 500px;
-  border: 1px solid #DC3545;
-  margin: 50px 50px 0 auto;
-}
+  .container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  #map {
+    border-width: 3px;
+    border-color: #24A476;
+    height: 600px;
+    width: 850px;
+    border-radius: 20px;
+  }
 </style>
