@@ -96,7 +96,7 @@ export default {
   },
   computed: {
     profileImage() {
-      // Aquí debes proporcionar la lógica para obtener la imagen de perfil
+      
       return 'https://frases.top/wp-content/uploads/2021/08/la-mejor-foto-de-perfil-para-whatsapp.jpg';
     }
   },
