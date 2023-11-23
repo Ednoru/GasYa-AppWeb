@@ -1,0 +1,5 @@
+Como usuario quiero que mi ubicación se muestre en el mapa para saber a cuanto estoy de los grifos
+
+When el usuario busque su ubicacion
+Then se le mostra un marcador especial que le muestre donde esta
+and  la ubicacion de los grifos
