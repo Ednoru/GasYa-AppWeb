@@ -97,7 +97,7 @@ export default {
   computed: {
     profileImage() {
       
-      return 'https://frases.top/wp-content/uploads/2021/08/la-mejor-foto-de-perfil-para-whatsapp.jpg';
+      return 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pinterest.com.mx%2Fgracemurmaidertkd%2Ffotos-random-para-poner-en-tu-perfil%2F&psig=AOvVaw1zS_eJcC9MhEM950S0qGAX&ust=1700242749247000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCJDI1vqHyYIDFQAAAAAdAAAAABAI';
     }
   },
   methods: {

@@ -13,7 +13,7 @@
       </select>
     </div>
   </div>
-  
+
   <div class="container">
     <div id="map"></div>
   </div>

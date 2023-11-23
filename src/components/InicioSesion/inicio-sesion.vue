@@ -55,13 +55,26 @@ export default {
         console.log('Por favor, complete todos los campos.');
       }
     },
-    checkCredentials() {
+    /*checkCredentials() {
       UserService.getUsers().then(response => {
         const users = response.data;
         const user = users.find(u => u.correo === this.correo && u.contrasena === this.contrasena);
         if (user) {
           localStorage.setItem('user', JSON.stringify(user));
           console.log('Inicio de sesión exitoso');
+          this.$router.push('/');
+        } else {
+          this.error = true;
+        }
+      });
+    },*/
+    checkCredentials() {
+      UserService.getUsers(this.correo, this.contrasena).then(response => {
+        const users = response.data;
+        const user = users.find(u => u.correo === this.correo && u.contrasena === this.contrasena);
+        if (user) {
+          localStorage.setItem('user', JSON.stringify(user));
+          this.userLoggedIn = true;
           this.$router.push('/');
         } else {
           this.error = true;
